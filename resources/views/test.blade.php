@@ -15,4 +15,4 @@
     <p>Phần tử : {{$item}} </p>
 @endforeach
 
-@php()
+
