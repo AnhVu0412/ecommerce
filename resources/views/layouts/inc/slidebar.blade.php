@@ -5,20 +5,20 @@
       Tip 2: you can also add an image using data-image tag
   -->
     <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            Creative Tim
+           ITDragons
         </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active  ">
-                <a class="nav-link" href="./dashboard.html">
+                <a class="nav-link" href="/categories">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./user.html">
+                <a class="nav-link" href="/add-categories">
                     <i class="material-icons">person</i>
-                    <p>User Profile</p>
+                    <p>Categories</p>
                 </a>
             </li>
             <li class="nav-item ">
