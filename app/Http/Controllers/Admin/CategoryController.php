@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -37,5 +38,47 @@ class CategoryController extends Controller
         $category->meta_keyword = $request ->input('meta_keyword');
         $category->save();
         return redirect('/categories')->with('status',"categories added successfully");
+    }
+
+    public function edit($id){
+        $category = Category::find($id);
+        return view('admin.categories.edit',compact('category'));
+    }
+
+    public function update(Request $request,$id){
+        $category = Category::find($id);
+        if($request->hasFile('image')){
+            $path = 'public/assets/uploads/category/'.$category->image;
+            if(File::exists($path)){
+                File:delete($path);
+            }
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('public/assets/uploads/category',$filename);
+            $category->image = $filename;
+        }
+        $category->name = $request ->input('name');
+        $category->slug = $request ->input('slug');
+        $category->description = $request ->input('description');
+        $category->status = $request ->input('status')==true? '1': '0';
+        $category->popular = $request ->input('popular')==true? '1': '0';
+        $category->meta_title = $request ->input('meta_title');
+        $category->meta_description = $request ->input('meta_description');
+        $category->meta_keyword = $request ->input('meta_keyword');
+        $category->update();
+        return redirect('/categories')->with('status',"Category updated successfully");
+    }
+
+    public function delete($id){
+        $category = Category::find($id);
+        if($category->image){
+            $path = 'public/assets/uploads/category/'.$category->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+        }
+        $category->delete();
+        return redirect('/categories')->with('status',"category has been deleted");
     }
 }

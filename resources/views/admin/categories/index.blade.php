@@ -6,28 +6,28 @@
             <h3>CATEGORY PAGE</h3>
        </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <table style="width: 100%" class="table table-bordered table-striped table-sm">
                 <thead>
                     <tr>
-                        <td>ID</td>
-                        <td>Name</td>
-                        <td>Description</td>
-                        <td>Image</td>
-                        <td>Action</td>
+                        <td style="width: 8%">ID</td>
+                        <td style="width: 20%">Name</td>
+                        <td style="width: 25%">Description</td>
+                        <td style="width: 25%">Image</td>
+                        <td style="width: 20%">Action</td>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($category as $item)
                         <tr>
-                            <td>{{$item ->id}}</td>
-                            <td>{{$item ->name}}</td>
-                            <td>{{$item ->description}}</td>
-                            <td>
+                            <td style="width: 8%">{{$item ->id}}</td>
+                            <td style="width: 20%">{{$item ->name}}</td>
+                            <td style="width: 25%">{{$item ->description}}</td>
+                            <td style="width: 25%">
                                 <img src="{{asset('public/assets/uploads/category/'.$item->image) }}" alt="Image here" class="admin-fetch-image">
                             </td>
-                            <td>
-                                <button class="btn btn-primary">Edit</button>
-                                <button class="btn btn-danger">Delete</button>
+                            <td style="width: 25%">
+                                <a href="{{url('edit-category/'.$item->id)}}" class="btn btn-primary">Edit</a>
+                                <a href="{{url('delete-category/'.$item->id)}}" class="btn btn-danger">Delete</a>
                             </td>
 
                         </tr>

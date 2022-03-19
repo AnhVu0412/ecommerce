@@ -25,10 +25,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
     Route::middleware(['auth','isAdmin'])->group(function(){
-        Route::get('/dashboard',[FrontendController::class,'index']);
         Route::get('/categories',[CategoryController::class,'index']);
         Route::get('/add-categories',[CategoryController::class,'add']);
         Route::post('/insert-categories',[CategoryController::class,'insert']);
+        Route::get('/edit-category/{id}',[CategoryController::class,'edit']);
+        Route::put('update-category/{id}',[CategoryController::class,'update']);
+        Route::get('/delete-category/{id}',[CategoryController::class,'delete']);
 });
 
 
