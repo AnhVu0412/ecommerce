@@ -11,7 +11,7 @@
                     <tr>
                         <td style="width: 8%">ID</td>
                         <td style="width: 20%">Name</td>
-                        <td style="width: 25%">Description</td>
+                        <td style="width: 20%">Description</td>
                         <td style="width: 25%">Image</td>
                         <td style="width: 20%">Action</td>
                     </tr>
@@ -21,7 +21,7 @@
                         <tr>
                             <td style="width: 8%">{{$item ->id}}</td>
                             <td style="width: 20%">{{$item ->name}}</td>
-                            <td style="width: 25%">{{$item ->description}}</td>
+                            <td style="width: 20%">{{$item ->description}}</td>
                             <td style="width: 25%">
                                 <img src="{{asset('public/assets/uploads/category/'.$item->image) }}" alt="Image here" class="admin-fetch-image">
                             </td>
