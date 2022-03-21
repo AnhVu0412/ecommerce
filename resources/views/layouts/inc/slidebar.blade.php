@@ -21,12 +21,19 @@
                     <p>Add Categories</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./tables.html">
-                    <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+            <li class="nav-item {{ Request::is('products') ?'active': ''}}">
+            <a class="nav-link" href="/products">
+                <i class="material-icons">dashboard</i>
+                <p>Product</p>
+            </a>
+            </li>
+            <li class="nav-item {{ Request::is('add-products') ?'active': ''}}">
+                <a class="nav-link" href="/add-products">
+                    <i class="material-icons">person</i>
+                    <p>Add Products</p>
                 </a>
             </li>
+
 
         </ul>
     </div>
