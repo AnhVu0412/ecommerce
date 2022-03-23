@@ -1,11 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\MailController;
 
 
 /*
@@ -28,12 +31,18 @@ Route::get('/category',[FrontendController::class,'category']);
 Route::get('/view-category/{slug}',[FrontendController::class,'viewcategory']);
 Route::get('category/{cate_slug}/{prd_slug}',[FrontendController::class,'productdetail']);
 
+
 Auth::routes();
 
 Route::post('add-to-cart',[CartController::class,'addProduct']);
 Route::post('delete-cart-item',[CartController::class,'delete']);
+Route::post('update-cart',[CartController::class,'update']);
 Route::middleware(['auth'])->group(function(){
     Route::get('cart',[CartController::class,'viewCart']);
+    Route::get('checkout',[CheckoutController::class,'index']);
+    Route::post('place-order',[CheckoutController::class,'placeorder']);
+    Route::get('send-mail',[MailController::class,'sendEmail']);
+
 
 });
 
