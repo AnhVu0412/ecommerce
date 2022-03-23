@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\User\UserController;
 
 
 /*
@@ -42,6 +43,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('checkout',[CheckoutController::class,'index']);
     Route::post('place-order',[CheckoutController::class,'placeorder']);
     Route::get('send-mail',[MailController::class,'sendEmail']);
+
+    Route::get('my-order',[UserController::class,'myOrder']);
+    Route::get('view-order/{id}',[UserController::class,'viewOrder']);
 
 
 });

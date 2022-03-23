@@ -53,6 +53,7 @@
                             <h6>Order Detail</h6>
                             <hr>
                             @if($cartItem->count() > 0)
+                                @php $total = 0; @endphp
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -62,14 +63,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach($cartItem as $item)
                                         <tr>
                                             <td>{{$item->products->name}}</td>
                                             <td>{{$item->prod_qty}}</td>
                                             <td>{{$item->products->selling_price}}</td>
                                         </tr>
+                                        @php
+
+                                            /** @var TYPE_NAME $item */
+                                              $total += $item->products->selling_price * $item->prod_qty;
+                                        @endphp
                                     @endforeach
                                 </tbody>
+                                <hr>
+                                <h5>Total Price {{$total}}</h5>
                             </table>
                             <button type="submit" class="btn btn-primary w-100">Order</button>
                         </div>
