@@ -48,6 +48,8 @@
                                         </tbody>
                                     </table>
                                     <h4>Grand Total: {{$orders->total_price}}</h4>
+                                    <h4>Payment Mode: {{$orders->payment_mode}}</h4>
+                                    <h5>Bill: {{$orders->payment_id}} </h5>
 
                                     <label for="">Order Status</label>
                                     <form action="{{url('update-status/'.$orders->id)}}" method="post">

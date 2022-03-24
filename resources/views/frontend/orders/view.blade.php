@@ -48,6 +48,7 @@
                                         </tbody>
                                     </table>
                                     <h4>Grand Total: {{$order->total_price}}</h4>
+                                    <h4>Payment mode: {{$order->payment_mode}}</h4>
                                 </div>
                             </div>
                         </div>

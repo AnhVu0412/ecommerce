@@ -87,6 +87,7 @@
                                 <h5>Total Price {{$total}}</h5>
                             </table>
                             <input type="hidden" name="payment_mode" value="COD">
+                            <input type="hidden" name="payment_id" value="COD">
                             <button type="submit" class="btn btn-primary w-100">Place Order | COD</button>
                                 <div id="paypal-button-container"></div>
 
@@ -135,21 +136,26 @@
                     var city = $('.city').val();
                     var country = $('.country').val();
 
+                    $.ajaxSetup({
+                        headers:{
+                            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
                     $.ajax({
                         method: "POST",
-                        url: "place-order",
+                        url: "/place-order",
                         data: {
-                            'name': response.name,
-                            'email': response.email,
-                            'phone': response.phone,
-                            'address': response.address,
-                            'city':response.city,
-                            'country':response.country,
+                            'name':name,
+                            'email': email,
+                            'phone': phone,
+                            'address': address,
+                            'city': city,
+                            'country': country,
                             'payment_mode':"Paid by paypal",
                             'payment_id': orderData.id,
                         },
                         success: function (response){
-                            swal(response.status);
+                            alert(response.status);
                             window.location.href = "/my-order"
                         }
                     })
