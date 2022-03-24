@@ -26,6 +26,9 @@ class CheckoutController extends Controller
         $order->address = $request->input('address');
         $order->country = $request->input('country');
         $order->tracking_no = 'ITDF'.rand(111,999);
+
+        $order->payment_mode = $request->input('payment_mode');
+        $order->payment_id = $request->input('payment_id');
         $total = 0;
         $cartitems_total = Cart::where('user_id',Auth::id())->get();
         foreach ($cartitems_total as $prd){
@@ -38,7 +41,8 @@ class CheckoutController extends Controller
         $cartitem = Cart::where('user_id',Auth::id())->get();
         foreach ($cartitem as $item){
             OrderItem::create([
-               'order_id' => $item->id,
+//               'order_id' => $item->id,
+                'order_id' => $order->id,
                 'prod_id' =>$item->prod_id,
                 'qty' => $item->prod_qty,
                 'price' =>$item->products->selling_price,
@@ -47,6 +51,10 @@ class CheckoutController extends Controller
 
         $cartitem = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($cartitem);
+
+        if($request->input('payment_mode')=="Paid by paypal"){
+            return response()->json(['status' => "Order place successfully"]);
+        }
 
         return redirect('/')->with('status',"Orderd place succesfully");
     }

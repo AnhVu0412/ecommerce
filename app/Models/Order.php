@@ -19,11 +19,13 @@ class Order extends Model
         'address',
         'country',
         'total_price',
+        'payment_mode',
+        'payment_id',
         'message',
         'status',
         'tracking_no'
     ];
-    public function items() {
-        return $this->hasMany('App\Models\OrderItem');
+    public function orderitems() {
+        return $this->hasMany(OrderItem::class);
     }
 }

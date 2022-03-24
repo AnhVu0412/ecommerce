@@ -33,7 +33,18 @@
                     <p>Add Products</p>
                 </a>
             </li>
-
+            <li class="nav-item {{ Request::is('orders') ?'active': ''}}">
+                <a class="nav-link" href="/orders">
+                    <i class="material-icons">content_paste</i>
+                    <p>New Order</p>
+                </a>
+            </li>
+            <li class="nav-item {{ Request::is('orders-history') ?'active': ''}}">
+                <a class="nav-link" href="/orders-history">
+                    <i class="material-icons">content_paste</i>
+                    <p>Order History</p>
+                </a>
+            </li>
 
         </ul>
     </div>

@@ -35,10 +35,10 @@
                                             <th>Image</th>
                                         </tr>
                                         <tbody>
-                                            @foreach($order->items as $item )
+                                            @foreach($order->orderitems as $item )
                                                 <tr>
                                                     <td>{{$item->products->name}}</td>
-                                                    <td>{{$item->prod_qty}}</td>
+                                                    <td>{{$item->qty}}</td>
                                                     <td>{{$item->price}}</td>
                                                     <td>
                                                         <img src="{{asset('public/assets/uploads/product/'.$item->products->image)}}" width="50px">

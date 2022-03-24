@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\OrderController;
 
 
 /*
@@ -67,6 +68,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('edit-product/{id}',[ProductController::class,'edit']);
         Route::put('update-product/{id}',[ProductController::class,'update']);
         Route::get('delete-product/{id}',[ProductController::class,'delete']);
+
+        Route::get('orders',[OrderController::class,'index']);
+        Route::get('admin/view-order/{id}',[OrderController::class,'view']);
+        Route::put('update-status/{id}',[OrderController::class,'status']);
+        Route::get('orders-history',[OrderController::class,'history']);
 
 });
 
